@@ -268,7 +268,12 @@ function generarLeyendaDosis(medicamento, dosisCalculada, frecuenciaHoras) {
 }
 
 // Integración con la función existente (ejemplo general, requiere adaptación al flujo real)
-function mostrarDosisFinal(medicamento, dosisCalculada, frecuenciaHoras) {
-    const leyenda = generarLeyendaDosis(medicamento, dosisCalculada, frecuenciaHoras);
-    document.getElementById("resultado-dosis").innerText = leyenda;
+
+function mostrarDosisFinal(dosis, frecuencia, dias, presentacion) {
+    const leyenda = generarIndicacionDosis(dosis, frecuencia, dias, presentacion);
+    const resultadoDiv = document.getElementById("resultado-dosis");
+    if (resultadoDiv) {
+        resultadoDiv.innerHTML = `<p class="mt-4 text-lg font-semibold text-green-700">${leyenda}</p>`;
+    }
 }
+
