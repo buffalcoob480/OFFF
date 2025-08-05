@@ -269,11 +269,49 @@ function generarLeyendaDosis(medicamento, dosisCalculada, frecuenciaHoras) {
 
 // Integración con la función existente (ejemplo general, requiere adaptación al flujo real)
 
+
 function mostrarDosisFinal(dosis, frecuencia, dias, presentacion) {
     const leyenda = generarIndicacionDosis(dosis, frecuencia, dias, presentacion);
     const resultadoDiv = document.getElementById("resultado-dosis");
     if (resultadoDiv) {
-        resultadoDiv.innerHTML = `<p class="mt-4 text-lg font-semibold text-green-700">${leyenda}</p>`;
+        resultadoDiv.innerHTML = `
+            <p class="mt-4 text-lg font-semibold text-green-700">${leyenda}</p>
+            <button onclick="copiarIndicacion('${leyenda}')" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                Copiar indicación
+            </button>
+        `;
     }
 }
 
+function copiarIndicacion(texto) {
+    navigator.clipboard.writeText(texto)
+        .then(() => alert("✅ Indicación copiada al portapapeles"))
+        .catch(() => alert("❌ Error al copiar la indicación"));
+}
+</p>`;
+    }
+}
+
+
+
+
+function calcularHidratacion() {
+    const peso = parseFloat(document.getElementById("peso-hidratacion").value);
+    if (!peso || peso <= 0) return alert("Ingresa un peso válido.");
+    const mantenimiento = peso < 10 ? peso * 100 :
+                         peso <= 20 ? (10 * 100) + ((peso - 10) * 50) :
+                         (10 * 100) + (10 * 50) + ((peso - 20) * 20);
+    const deficit = peso * 50; // 50 mL/kg como ejemplo moderado
+    const total = mantenimiento + deficit;
+    const res = `Mantenimiento: ${mantenimiento.toFixed(0)} mL/día | Déficit: ${deficit.toFixed(0)} mL | Total: ${total.toFixed(0)} mL en 24h`;
+    document.getElementById("resultado-hidratacion").innerText = res;
+}
+
+function calcularIbuprofeno() {
+    const peso = parseFloat(document.getElementById("peso-ibuprofeno").value);
+    if (!peso || peso <= 0) return alert("Ingresa un peso válido.");
+    const dosis = peso * 10; // 10 mg/kg/dosis
+    const gotas = dosis / 20; // suponiendo 100 mg/5 mL = 20 mg/mL => 1 gota = 1 mg (aprox)
+    const texto = `Dosis: ${dosis.toFixed(1)} mg cada 8 h (~${gotas.toFixed(0)} gotas)`;
+    document.getElementById("resultado-ibuprofeno").innerText = texto;
+}

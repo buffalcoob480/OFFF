@@ -138,7 +138,31 @@
         <footer class="text-center p-4 mt-8 text-sm text-slate-500 border-t">
             <p>Información de referencia. Consulte siempre a un profesional de la salud.</p>
         </footer>
-    </main>
+    
+<details open class="mb-6">
+<summary class="text-xl font-semibold cursor-pointer">Calculadoras Adicionales</summary>
+<div id="calculadoras-adicionales" class="space-y-6 mt-4">
+
+  <!-- Calculadora: Hidratación por gastroenteritis -->
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="text-lg font-bold mb-2">Hidratación en gastroenteritis aguda</h3>
+    <label>Peso del paciente (kg): <input id="peso-hidratacion" type="number" class="border rounded px-2 py-1 ml-2 w-24" /></label>
+    <button onclick="calcularHidratacion()" class="ml-4 px-3 py-1 bg-green-600 text-white rounded">Calcular</button>
+    <div id="resultado-hidratacion" class="mt-2 text-blue-800 font-semibold"></div>
+  </div>
+
+  <!-- Calculadora: Ibuprofeno pediátrico -->
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="text-lg font-bold mb-2">Dosis de Ibuprofeno</h3>
+    <label>Peso del paciente (kg): <input id="peso-ibuprofeno" type="number" class="border rounded px-2 py-1 ml-2 w-24" /></label>
+    <button onclick="calcularIbuprofeno()" class="ml-4 px-3 py-1 bg-green-600 text-white rounded">Calcular</button>
+    <div id="resultado-ibuprofeno" class="mt-2 text-blue-800 font-semibold"></div>
+  </div>
+
+</div>
+</details>
+
+</main>
     
     <div id="medicationModal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div id="modal-content-wrapper" class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col transform transition-all duration-300 scale-95 opacity-0"></div></div>
     <template id="medication-card-template"><article class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer flex flex-col overflow-hidden"><img alt="" class="card-img w-full h-32 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x200/fecaca/991b1b?text=Imagen+no+disponible';"><div class="p-5 flex flex-col flex-grow"><div><h3 class="card-name font-bold text-lg text-slate-900"></h3><p class="card-presentation text-sm text-slate-600"></p></div><div class="mt-4 pt-4 border-t border-slate-200 text-xs flex-grow flex flex-col justify-end"><p class="card-family font-semibold text-blue-600"></p><p class="card-uses text-slate-500 mt-1"></p></div></div></article></template>
